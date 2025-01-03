@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "../assets/css/display.css";
 
-const Display = ({ searchParams }) => {
+const Display = ({ searchParams, addFavorite }) => {
   const [filteredProperties, setFilteredProperties] = useState([]);
 
   useEffect(() => {
@@ -10,6 +11,7 @@ const Display = ({ searchParams }) => {
       const propertiesData = await response.json();
 
       const filterProperties = (properties, params) => {
+        if (!params) return properties;
         return properties.filter((property) => {
           return (
             (!params.propertyType || property.type === params.propertyType) &&
@@ -35,33 +37,36 @@ const Display = ({ searchParams }) => {
     <div className="container mt-5">
       <h1 className="text-center mb-4">Available Properties</h1>
       <div className="row">
-        {filteredProperties.map((property) => {
-          console.log(property); // Add this line to log the property object
-          return (
-            <div className="col-md-6 mb-4" key={property.id}>
-              <div className="card">
-                <img
-                  src={property.picture}
-                  className="card-img-top"
-                  alt={property.type}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{property.type}</h5>
-                  <p className="card-text">
-                    <strong>Price:</strong> ${property.price.toLocaleString()}
-                    <br />
-                    <strong>Location:</strong> {property.location}
-                    <br />
-                    <strong>Bedrooms:</strong> {property.bedrooms}
-                  </p>
-                  <Link to={`/property/${property.id}`} className="btn btn-primary">
-                    View Details
-                  </Link>
-                </div>
+        {filteredProperties.map((property) => (
+          <div className="col-md-4 mb-4" key={property.id}>
+            <div className="card">
+              <img
+                src={property.picture}
+                className="card-img-top"
+                alt={property.type}
+              />
+              <div className="card-body">
+                <h5 className="card-title">{property.type}</h5>
+                <p className="card-text">
+                  <strong>Price:</strong> ${property.price.toLocaleString()}
+                  <br />
+                  <strong>Location:</strong> {property.location}
+                  <br />
+                  <strong>Bedrooms:</strong> {property.bedrooms}
+                </p>
+                <button
+                  onClick={() => addFavorite(property)}
+                  className="btn btn-warning fav"
+                >
+                  ♥
+                </button>
+                <Link to={`/property/${property.id}`} className="btn btn-primary ml-2">
+                  View Details
+                </Link>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );

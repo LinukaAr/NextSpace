@@ -1,16 +1,33 @@
 import React from "react";
+import "../assets/css/favourites.css";
 
-function Favourites({ favourites }) {
+
+const Favorites = ({ favorites, removeFavorite, clearFavorites }) => {
   return (
-    <div className="favourites-container">
-      <h2>Favourites</h2>
-      <ul>
-        {favourites.map((property, index) => (
-          <li key={index}>{property}</li>
+    <div className="favorites-container">
+      
+      <div className="favorites-list">
+        {favorites.map((property) => (
+          <div className="favorite-item" key={property.id}>
+            <img src={property.picture} alt={property.type} />
+            <div>
+              <h5>{property.type}</h5>
+              <p>{property.location}</p>
+              <button
+                onClick={() => removeFavorite(property.id)}
+                className="btn btn-danger btn-clear"
+              >
+                X
+              </button>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+      <button onClick={clearFavorites} className="btn btn-danger mb-3">
+        Clear All
+      </button>
     </div>
   );
-}
+};
 
-export default Favourites;
+export default Favorites;
