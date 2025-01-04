@@ -2,7 +2,7 @@
   background-color: #646e65;
   padding: 20px 0;
   border-top: 1px solid #e7e7e7;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .footer .container {
@@ -48,6 +48,12 @@
 .footer .text-center {
   text-align: center;
 }
+
+.footer-logo {
+  width: 100px; 
+  margin-bottom: 10px;
+}
+
 
 @media (max-width: 768px) {
   .footer .col-md-4 {

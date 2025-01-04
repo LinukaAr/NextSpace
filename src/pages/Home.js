@@ -6,12 +6,13 @@ import Footer from "../components/footer";
 import About from "../components/about";
 import Contact from "../components/contact";
 
+//Main Home component
 function Home() {
   const [searchParams, setSearchParams] = useState({});
 
   return (
     <>
-      <Navbar />
+      <Navbar showLinks={true} /> {/* Pass showLinks prop */}
       <Search setSearchParams={setSearchParams} />
       {/* <Display searchParams={searchParams} /> */}
       <section id="about">

@@ -2,6 +2,7 @@ import React from "react";
 import "../assets/css/footer.css";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
+// Footer component
 const Footer = () => {
   return (
     <footer className="footer">
@@ -12,6 +13,8 @@ const Footer = () => {
             <p>
               We are a leading real estate company dedicated to helping you find your dream property.
             </p>
+            {/* // Logo */}
+            <img src="/images/logo.png" alt="Logo" className="footer-logo" /> 
           </div>
           <div className="col-md-4">
             <h5>Contact Us</h5>
@@ -20,8 +23,17 @@ const Footer = () => {
               <br />
               Phone: +1 234 567 890
             </p>
+            <h5>Branches</h5>
+            <p>
+              UK
+              <br />
+              Sri Lanka
+              <br />
+              New Zealand
+            </p>
           </div>
           <div className="col-md-4">
+            {/* // Social media links */}
             <h5>Follow Us</h5>
             <div className="social-links">
               <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">

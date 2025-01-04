@@ -7,14 +7,16 @@
 			"price": 750000,
 			"tenure": "Freehold",
 			"description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-			"location": "Petts Wood Road, Petts Wood, Orpington BR5",
+			"location": "Petts Wood Road, Petts Wood, Orpington ",
 			"picture": "images/h4.jpg",
 			"url": "properties/prop1.html",
 			"added": {
 				"month": "October",
 				"day": 12,
-				"year": 2022
-			}
+				"year": 2023
+			},
+			"postcode": "BR5"
+
 		},
 		{
 			"id": "prop2",
@@ -29,8 +31,10 @@
 			"added": {
 				"month": "September",
 				"day": 14,
-				"year": 2022
-			}
+				"year": 2024
+			},
+			"postcode": "EC1"
+
 		},
 		{
 			"id": "prop3",
@@ -45,8 +49,10 @@
 			"added": {
 				"month": "January",
 				"day": 10,
-				"year": 2023
-			}
+				"year": 2024
+			},
+			"postcode": " EC1"
+
 		},
 		{
 			"id": "prop4",
@@ -61,8 +67,9 @@
 			"added": {
 				"month": "March",
 				"day": 8,
-				"year": 2023
-			}
+				"year": 2024
+			},
+			"postcode": "RG1"
 		},
 		{
 			"id": "prop6",
@@ -78,7 +85,8 @@
 				"month": "May",
 				"day": 22,
 				"year": 2023
-			}
+			},
+			"postcode": "B1"
 		},
 		{
 			"id": "prop7",
@@ -94,7 +102,8 @@
 				"month": "April",
 				"day": 5,
 				"year": 2023
-			}
+			},
+			"postcode": "GL1"
 		},
 		{
 			"id": "prop8",
@@ -110,7 +119,8 @@
 				"month": "July",
 				"day": 19,
 				"year": 2023
-			}
+			},
+			"postcode": "GU1"
 		},
 		{
 			"id": "prop9",
@@ -126,7 +136,8 @@
 				"month": "August",
 				"day": 25,
 				"year": 2023
-			}
+			},
+			"postcode": "LS1"
 		},{
 			"id": "prop5",
 			"type": "House",
@@ -141,7 +152,9 @@
 				"month": "June",
 				"day": 15,
 				"year": 2023
-			}
+			},
+			"postcode": "BR5"
+
 		}
 	]
 }

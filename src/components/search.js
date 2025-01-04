@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../assets/css/search.css";
 import Favorites from "./favourites";
 import Display from "./display"; // Import Display component
-import { FaHeart } from "react-icons/fa";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
+// Define the Search component
 function Search({ setSearchParams }) {
   const [propertyType, setPropertyType] = useState("");
   const [minPrice, setMinPrice] = useState("");
@@ -18,12 +18,25 @@ function Search({ setSearchParams }) {
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
   const [searchParams, setSearchParamsState] = useState({});
+  const [availablePostcodes, setAvailablePostcodes] = useState([]);
 
+  // Load favorites from local storage and available postcodes from properties.json
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(savedFavorites);
+
+    // Fetch available postcodes from properties.json
+    const fetchProperties = async () => {
+      const response = await fetch(`${process.env.PUBLIC_URL}/properties.json`);
+      const propertiesData = await response.json();
+      const postcodes = [...new Set(propertiesData.properties.map(property => property.postcode))];
+      setAvailablePostcodes(postcodes);
+    };
+
+    fetchProperties();
   }, []);
 
+  // Handle search form submission
   const handleSearch = (e) => {
     e.preventDefault();
     const params = {
@@ -36,28 +49,31 @@ function Search({ setSearchParams }) {
       endDate,
       postcode,
     };
-    setSearchParams(params);
-    setSearchParamsState(params);
+    setSearchParams(params);//Call setSearchParams with the search parameters
+    setSearchParamsState(params);//Set the searchParams state
   };
 
+  // Add property to favorites
   const addFavorite = (property) => {
-    if (!favorites.some((fav) => fav.id === property.id)) {
+    if (!favorites.some((fav) => fav.id === property.id)) {//Check if the property is already in favorites
       const newFavorites = [...favorites, property];
       setFavorites(newFavorites);
       localStorage.setItem("favorites", JSON.stringify(newFavorites));
       alert("Added to favourites");
-    }
+    }alert("Already in favourites");
   };
 
+  // Remove property from favorites
   const removeFavorite = (id) => {
     const newFavorites = favorites.filter((property) => property.id !== id);
     setFavorites(newFavorites);
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
   };
 
+  // Clear all favorites
   const clearFavorites = () => {
     setFavorites([]);
-    localStorage.removeItem("favorites");
+    localStorage.removeItem("favorites");//Remove favorites from local storage
   };
 
   return (
@@ -65,6 +81,7 @@ function Search({ setSearchParams }) {
       <div className="favorites-icon btn btn-warning"  onClick={() => setShowFavorites(true)}>
       ♥
       </div>
+      {/* //Favorites modal */}
       <Modal show={showFavorites} onHide={() => setShowFavorites(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Favorites</Modal.Title>
@@ -83,13 +100,14 @@ function Search({ setSearchParams }) {
         </Modal.Footer>
       </Modal>
       <div>
+        {/* //Searching for properties */}
         <div className="search-overlay">
-          <h1 className="text-center text-black mb-4">Find Your Dream Property</h1>
+          <h1 className="text-center text-white mb-4">Find Your Dream Property</h1>
           <form onSubmit={handleSearch} className="container">
             <div className="row mb-3">
               <div className="col-md-3">
                 <div className="form-group">
-                  <label htmlFor="property-type" className="text-black">Property Type</label>
+                  <label htmlFor="property-type" className="text-white">Property Type</label>
                   <select
                     id="property-type"
                     className="form-control"
@@ -105,38 +123,44 @@ function Search({ setSearchParams }) {
               </div>
               <div className="col-md-3">
                 <div className="form-group">
-                  <label htmlFor="min-price" className="text-black">Min Price</label>
+                  <label htmlFor="min-price" className="text-white">Min Price</label>
                   <input
                     type="number"
                     id="min-price"
                     className="form-control"
                     value={minPrice}
-                    onChange={(e) => setMinPrice(e.target.value)}
+                    placeholder="Min Price"
+                    onChange={(e) => setMinPrice(e.target.value)}//Set the minPrice state
                   />
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="form-group">
-                  <label htmlFor="max-price" className="text-black">Max Price</label>
+                  <label htmlFor="max-price" className="text-white">Max Price</label>
                   <input
                     type="number"
                     id="max-price"
                     className="form-control"
                     value={maxPrice}
-                    onChange={(e) => setMaxPrice(e.target.value)}
+                    placeholder="Max Price"
+                    onChange={(e) => setMaxPrice(e.target.value)}//Set the maxPrice state
                   />
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="form-group">
-                  <label htmlFor="postcode" className="text-black">Postcode Area</label>
-                  <input
-                    type="text"
+                  <label htmlFor="postcode" className="text-white">Postcode Area</label>
+                  <select
                     id="postcode"
                     className="form-control"
                     value={postcode}
                     onChange={(e) => setPostcode(e.target.value)}
-                  />
+                  >
+                    <option value="">Any</option>
+                    {availablePostcodes.map((postcode) => (
+                      <option key={postcode} value={postcode}>{postcode}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>
@@ -144,31 +168,33 @@ function Search({ setSearchParams }) {
             <div className="row mb-3">
               <div className="col-md-3">
                 <div className="form-group">
-                  <label htmlFor="minBedrooms" className="text-black">Min Bedrooms</label>
+                  <label htmlFor="minBedrooms" className="text-white">Min Bedrooms</label>
                   <input
                     type="number"
                     id="minBedrooms"
                     className="form-control"
                     value={minBedrooms}
+                    placeholder="Min Bedrooms"
                     onChange={(e) => setMinBedrooms(e.target.value)}
                   />
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="form-group">
-                  <label htmlFor="maxBedrooms" className="text-black">Max Bedrooms</label>
+                  <label htmlFor="maxBedrooms" className="text-white">Max Bedrooms</label>
                   <input
                     type="number"
                     id="maxBedrooms"
                     className="form-control"
                     value={maxBedrooms}
+                    placeholder="Max Bedrooms"
                     onChange={(e) => setMaxBedrooms(e.target.value)}
                   />
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="form-group">
-                  <label htmlFor="startDate" className="text-black">Start Date</label>
+                  <label htmlFor="startDate" className="text-white">Start Date</label>
                   <input
                     type="date"
                     id="startDate"
@@ -180,7 +206,7 @@ function Search({ setSearchParams }) {
               </div>
               <div className="col-md-3">
                 <div className="form-group">
-                  <label htmlFor="endDate" className="text-black">End Date</label>
+                  <label htmlFor="endDate" className="text-white">End Date</label>
                   <input
                     type="date"
                     id="endDate"
@@ -193,7 +219,7 @@ function Search({ setSearchParams }) {
             </div>
 
             <div className="row">
-              <div className="col-md-3 offset-md-9">
+              <div className="col-md-2 offset-md-5">
                 <button type="submit" className="btn btn-primary w-100">Search</button>
               </div>
             </div>

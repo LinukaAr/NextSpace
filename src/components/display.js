@@ -2,36 +2,46 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/display.css";
 
-const Display = ({ searchParams, addFavorite }) => {
-  const [filteredProperties, setFilteredProperties] = useState([]);
+const Display = ({ searchParams, addFavorite }) => { // addFavorite is a function that will be passed as a prop
+  const [filteredProperties, setFilteredProperties] = useState([]); // filteredProperties is a state variable
 
   useEffect(() => {
     const fetchProperties = async () => {
-      const response = await fetch(`${process.env.PUBLIC_URL}/properties.json`);
-      const propertiesData = await response.json();
+      const response = await fetch(`${process.env.PUBLIC_URL}/properties.json`); // Fetching the properties data
+      const propertiesData = await response.json();// Parsing the JSON data
 
+      // Filtering the properties based on the search parameters
       const filterProperties = (properties, params) => {
         if (!params) return properties;
         return properties.filter((property) => {
+          const propertyDate = new Date(`${property.added.month} ${property.added.day}, ${property.added.year}`);
+          const startDate = params.startDate ? new Date(params.startDate) : null;
+          const endDate = params.endDate ? new Date(params.endDate) : null;
+
           return (
             (!params.propertyType || property.type === params.propertyType) &&
             (!params.minPrice || property.price >= params.minPrice) &&
             (!params.maxPrice || property.price <= params.maxPrice) &&
             (!params.minBedrooms || property.bedrooms >= params.minBedrooms) &&
             (!params.maxBedrooms || property.bedrooms <= params.maxBedrooms) &&
-            (!params.dateAdded || new Date(property.added.date) >= new Date(params.dateAdded)) &&
-            (!params.startDate || new Date(property.added.date) >= new Date(params.startDate)) &&
-            (!params.endDate || new Date(property.added.date) <= new Date(params.endDate)) &&
-            (!params.postcode || property.postcode.includes(params.postcode))
+            (!startDate || propertyDate >= startDate) &&
+            (!endDate || propertyDate <= endDate) &&
+            (!params.postcode || property.postcode.startsWith(params.postcode))
           );
         });
       };
 
-      setFilteredProperties(filterProperties(propertiesData.properties, searchParams));
+      setFilteredProperties(filterProperties(propertiesData.properties, searchParams));// Setting the filtered properties in the state variable
     };
 
-    fetchProperties();
+    fetchProperties();// Calling the fetchProperties function
   }, [searchParams]);
+
+  // Function to format the date
+  const formatDate = (added) => {
+    const { month, day, year } = added;
+    return new Date(`${month} ${day}, ${year}`).toLocaleDateString();
+  };
 
   return (
     <div className="container mt-5">
@@ -53,6 +63,8 @@ const Display = ({ searchParams, addFavorite }) => {
                   <strong>Location:</strong> {property.location}
                   <br />
                   <strong>Bedrooms:</strong> {property.bedrooms}
+                  <br />
+                  <strong>Date Added:</strong> {formatDate(property.added)}
                 </p>
                 <button
                   onClick={() => addFavorite(property)}
@@ -60,6 +72,7 @@ const Display = ({ searchParams, addFavorite }) => {
                 >
                   ♥
                 </button>
+                {/* Link to the property details page with the property ID */}
                 <Link to={`/property/${property.id}`} className="btn btn-details ml-2">
                   View Details
                 </Link>

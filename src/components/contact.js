@@ -1,6 +1,7 @@
 import React from "react";
 import "../assets/css/contact.css";
 
+// Contact component
 const Contact = () => {
   return (
     <div className="contact-container">
@@ -8,6 +9,7 @@ const Contact = () => {
         <h1>Contact Us</h1>
         <div className="row">
           <div className="col-md-6">
+            {/* Contact form */}
             <form className="contact-form">
               <div className="form-group">
                 <label htmlFor="name">Name</label>

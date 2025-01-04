@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import "../assets/css/navbar.css";
 
-const Navbar = () => {
+//
+const Navbar = ({ showLinks }) => {//showLinks is a prop that will be passed to the Navbar component
   return (
-    <nav className="navbar navbar-expand-lg ">
+    <nav className="navbar navbar-expand-lg navbar-custom">
       <div className="container">
         {/* Logo */}
         <Link className="navbar-brand" to="/">
@@ -15,6 +16,7 @@ const Navbar = () => {
             alt="Logo"
             className="d-inline-block align-top"
           />
+          Real Estate
         </Link>
         {/* Toggle Button for Mobile View */}
         <button
@@ -31,21 +33,25 @@ const Navbar = () => {
         {/* Navbar Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Properties
-              </Link>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#about">
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contact">
-                Contact
-              </a>
-            </li>
+            {showLinks && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">
+                    Properties
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#about">
+                    About
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#contact">
+                    Contact
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
