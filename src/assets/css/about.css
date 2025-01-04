@@ -1,0 +1,20 @@
+.about-container {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+  }
+  
+  .about-container .container {
+    max-width: 1000px;
+    margin: 30px auto;
+  }
+  
+  .about-container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .about-container p {
+    font-size: 16px;
+    color: #6c757d;
+    line-height: 1.6;
+  }

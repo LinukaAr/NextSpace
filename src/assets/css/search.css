@@ -25,7 +25,6 @@
     background-image: url('../../../public/images/rb_78786.png');
     background-size: cover;
     background-position: center;
-    border-radius: 15px;
     color: white;
 }
 
@@ -45,10 +44,14 @@ h1 {
 
 /* Button styling */
 .btn-primary {
-    background-color: #007bff;
+    background-color: #919c92;
     border: none;
     padding: 10px;
     font-size: 1.1rem;
+}
+
+.favorites-icon{
+    background-color: transparent;
 }
 
 /* Responsive layout */

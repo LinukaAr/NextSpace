@@ -6,16 +6,16 @@ import "../assets/css/navbar.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg ">
       <div className="container">
         {/* Logo */}
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           <img
             src={logo} 
             alt="Logo"
             className="d-inline-block align-top"
           />
-        </a>
+        </Link>
         {/* Toggle Button for Mobile View */}
         <button
           className="navbar-toggler"
@@ -31,20 +31,14 @@ const Navbar = () => {
         {/* Navbar Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            \
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
-                Home
+              <Link className="nav-link" to="/">
+                Properties
               </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#about">
                 About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#services">
-                Services
               </a>
             </li>
             <li className="nav-item">

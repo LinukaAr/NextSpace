@@ -62,8 +62,8 @@ function Search({ setSearchParams }) {
 
   return (
     <div className="search-container">
-      <div className="favorites-icon" onClick={() => setShowFavorites(true)}>
-        <FaHeart size={30} color="red" />
+      <div className="favorites-icon btn btn-warning"  onClick={() => setShowFavorites(true)}>
+      ♥
       </div>
       <Modal show={showFavorites} onHide={() => setShowFavorites(false)}>
         <Modal.Header closeButton>

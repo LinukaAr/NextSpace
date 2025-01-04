@@ -60,7 +60,7 @@ const Display = ({ searchParams, addFavorite }) => {
                 >
                   ♥
                 </button>
-                <Link to={`/property/${property.id}`} className="btn btn-primary ml-2">
+                <Link to={`/property/${property.id}`} className="btn btn-details ml-2">
                   View Details
                 </Link>
               </div>

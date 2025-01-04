@@ -5,3 +5,17 @@
 .navbar-brand img{
     width: 80px;
 }
+
+.navbar {
+    background-color: #646e65; 
+}
+
+.navbar.navbar-brand,
+.navbar .nav-link {
+    color: #fff; 
+    font-size: 20px;
+}
+
+.navbar .nav-link:hover {
+    color: #ddd; 
+}

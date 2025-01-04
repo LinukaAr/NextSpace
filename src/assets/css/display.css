@@ -1,3 +1,11 @@
 .fav{
     margin-right: 20px;
 }
+
+.btn-details{
+    background-color: #919c92;
+}
+
+.btn-details:hover{
+    background-color: #787c78;
+}
