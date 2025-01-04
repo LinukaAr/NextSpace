@@ -23,5 +23,9 @@
 }
 
 .draggable-icon{
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    top:10px;
     margin-left: 10px;
 }
