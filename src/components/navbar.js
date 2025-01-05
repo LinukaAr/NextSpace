@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.png";
 import "../assets/css/navbar.css";
 
 //
@@ -12,7 +11,7 @@ const Navbar = ({ showLinks }) => {//showLinks is a prop that will be passed to 
         {/* Logo */}
         <Link className="navbar-brand" to="/">
           <img
-            src={logo} 
+            src="/images/logo.png"
             alt="Logo"
             className="d-inline-block align-top"
           />

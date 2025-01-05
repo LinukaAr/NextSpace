@@ -34,6 +34,15 @@ h1 {
     font-weight: bold;
 }
 
+.favorites-icon {
+    border: 1px solid #646e65;
+}
+
+.favorites-icon:hover {
+    background-color: #646e65;
+    border: 1px solid #646e65;
+}
+
 /* Form styling */
 .form-group label {
     font-weight: bold;

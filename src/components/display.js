@@ -45,7 +45,7 @@ const Display = ({ searchParams, addFavorite }) => { // addFavorite is a functio
 
   return (
     <div className="container mt-5">
-      <h1 className="text-center mb-4">Available Properties</h1>
+      <h1 className="text-center mb-4 head">Available Properties</h1>
       <div className="row">
         {filteredProperties.map((property) => (
           <div className="col-md-4 mb-4" key={property.id}>

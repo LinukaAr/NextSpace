@@ -7,8 +7,16 @@
 			"price": 750000,
 			"tenure": "Freehold",
 			"description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
-			"location": "Petts Wood Road, Petts Wood, Orpington ",
-			"picture": "images/h4.jpg",
+			"location": "Colombo 5",
+			"picture": "images/prop1/img1.jpeg",
+			"images": [
+                "images/prop1/img1.jpeg",
+                "images/prop1/img2.jpeg",
+                "images/prop1/img3.jpeg",
+                "images/prop1/img4.jpeg",
+                "images/prop1/img5.jpeg"
+            ],
+			"floorPlan": "images/prop1/p1Floor.png",
 			"url": "properties/prop1.html",
 			"added": {
 				"month": "October",
@@ -25,8 +33,16 @@
 			"price": 399995,
 			"tenure": "Freehold",
 			"description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances. This large open plan benefits from bi folding doors onto a secluded private courtyard garden...",
-			"location": "Crofton Road, Orpington BR6",
-			"picture": "images/flat1.jpg",
+			"location": "Galle Road, Mirissa",
+			"picture": "images/prop2/img1.jpeg",
+			"images": [
+                "images/prop2/img1.jpeg",
+                "images/prop2/img2.jpeg",
+                "images/prop2/img3.jpeg",
+                "images/prop2/img4.jpeg",
+                "images/prop2/img5.jpeg"
+            ],
+			"floorPlan": "images/prop2/p2Floor.jpg",
 			"url": "properties/prop2.html",
 			"added": {
 				"month": "September",
@@ -43,8 +59,16 @@
 			"price": 200000,
 			"tenure": "Leasehold",
 			"description": "Modern one-bedroom ailla ideal for first-time buyers or investors. Located in the city center with easy access to public transport and amenities. Open-plan kitchen and living area with high-end finishes.",
-			"location": "City Center, London",
-			"picture": "images/villa.jpg",
+			"location": "Kollupiiya, Colombo 3",
+			"picture": "images/prop3/img2.jpeg",
+			"images": [
+                "images/prop3/img1.png",
+                "images/prop3/img2.jpeg",
+                "images/prop3/img3.jpeg",
+                "images/prop3/img4.jpeg",
+                "images/prop3/img5.jpeg"
+            ],
+			"floorPlan": "images/prop3/p3Floor.jpg",
 			"url": "properties/prop3.html",
 			"added": {
 				"month": "January",
@@ -61,8 +85,16 @@
 			"price": 525000,
 			"tenure": "Freehold",
 			"description": "Spacious four-bedroom bungalow with large gardens and a garage. Situated in a quiet suburb perfect for families seeking tranquility. Recently renovated and ready to move in.",
-			"location": "Oakwood Drive, Reading",
-			"picture": "/images/h2.jpg",
+			"location": "Colombo 7",
+			"picture": "images/prop4/img1.jpeg",
+			"images": [
+                "images/prop4/img1.jpeg",
+                "images/prop4/img2.jpeg",
+                "images/prop4/img3.jpeg",
+                "images/prop4/img4.jpeg",
+                "images/prop4/img5.jpeg"
+            ],
+			"floorPlan": "images/prop4/p4Floor.jpg",
 			"url": "properties/prop4.html",
 			"added": {
 				"month": "March",
@@ -72,14 +104,22 @@
 			"postcode": "RG1"
 		},
 		{
-			"id": "prop6",
+			"id": "prop5",
 			"type": "Flat",
 			"bedrooms": 3,
 			"price": 1200000,
 			"tenure": "Leasehold",
 			"description": "Luxury penthouse suite with breathtaking city views, private elevator access, and premium amenities. Includes a large balcony and modern appliances.",
-			"location": "Skyline Tower, Birmingham",
-			"picture": "images/flat2.jpg",
+			"location": "Nugegota, Colombo 5",
+			"picture": "images/prop5/img1.jpeg",
+			"images": [
+                "images/prop5/img1.jpeg",
+                "images/prop5/img2.jpeg",
+                "images/prop5/img3.jpeg",
+                "images/prop5/img4.jpeg",
+                "images/prop5/img5.jpeg"
+            ],
+			"floorPlan": "images/prop5/p5Floor.jpg",
 			"url": "properties/prop6.html",
 			"added": {
 				"month": "May",
@@ -89,14 +129,22 @@
 			"postcode": "B1"
 		},
 		{
-			"id": "prop7",
+			"id": "prop6",
 			"type": "House",
 			"bedrooms": 2,
 			"price": 350000,
 			"tenure": "Freehold",
 			"description": "Charming two-bedroom cottage in a picturesque village. Perfect for a holiday home or retirement property, with traditional features and a private garden.",
-			"location": "Rose Lane, Cotswolds",
-			"picture": "images/h2.jpg",
+			"location": "Nandana Gardens, Colombo 4",
+			"picture": "images/prop6/img1.jpeg",
+			"images": [
+                "images/prop6/img1.jpeg",
+                "images/prop6/img2.jpeg",
+                "images/prop6/img3.jpeg",
+                "images/prop6/img4.jpeg",
+                "images/prop6/img5.jpeg"
+            ],
+			"floorPlan": "images/prop6/p6Floor.jpg",
 			"url": "properties/prop7.html",
 			"added": {
 				"month": "April",
@@ -106,14 +154,22 @@
 			"postcode": "GL1"
 		},
 		{
-			"id": "prop8",
+			"id": "prop7",
 			"type": "House",
 			"bedrooms": 5,
 			"price": 2500000,
 			"tenure": "Freehold",
 			"description": "Exclusive five-bedroom House with private pool, gym, and landscaped gardens. Situated in a premium gated community with 24/7 security.",
-			"location": "Palm Grove, Surrey",
-			"picture": "images/h5.jpg",
+			"location": "Homagama",
+			"picture": "images/prop7/img1.jpg",
+			"images": [
+                "images/prop7/img1.jpg",
+                "images/prop7/img2.jpg",
+                "images/prop7/img3.jpg",
+                "images/prop7/img4.jpg",
+                "images/prop7/img5.jpg"
+            ],
+			"floorPlan": "images/prop7/p7Floor.jpg",
 			"url": "properties/prop8.html",
 			"added": {
 				"month": "July",
@@ -123,14 +179,22 @@
 			"postcode": "GU1"
 		},
 		{
-			"id": "prop9",
+			"id": "prop8",
 			"type": "Villa",
 			"bedrooms": 3,
 			"price": 600000,
 			"tenure": "Freehold",
 			"description": "Three-bedroom terrace home with a spacious living room, modern kitchen, and a backyard. Located close to schools and public transport.",
-			"location": "Main Street, Leeds",
-			"picture": "images/villa1.jpg",
+			"location": "Main Street, Kandy",
+			"picture": "images/prop8/img1.jpeg",
+			"images": [
+                "images/prop8/img1.jpeg",
+                "images/prop8/img2.jpeg",
+                "images/prop8/img3.jpeg",
+                "images/prop8/img4.jpeg",
+                "images/prop8/img5.jpeg"
+            ],
+			"floorPlan": "images/prop8/p8Floor.jpg",
 			"url": "properties/prop9.html",
 			"added": {
 				"month": "August",
@@ -139,14 +203,22 @@
 			},
 			"postcode": "LS1"
 		},{
-			"id": "prop5",
+			"id": "prop9",
 			"type": "House",
 			"bedrooms": 0,
 			"price": 120000,
 			"tenure": "Leasehold",
 			"description": "Compact and affordable studio apartment located near a university campus. Ideal for students or single professionals looking for a low-cost option.",
-			"location": "Elm Street, Manchester",
-			"picture": "images/h1.jpg",
+			"location": "Main Road, Gampaha",
+			"picture": "images/prop9/img1.jpeg",
+			"images": [
+                "images/prop9/img1.jpeg",
+                "images/prop9/img2.jpeg",
+                "images/prop9/img3.jpeg",
+                "images/prop9/img4.jpeg",
+                "images/prop9/img5.jpeg"
+            ],
+			"floorPlan": "images/prop2/p2Floor.jpg",
 			"url": "properties/prop5.html",
 			"added": {
 				"month": "June",

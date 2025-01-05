@@ -81,3 +81,7 @@
     line-height: 1.6;
     color: #333333;
   }
+
+  .property-detail-container .carousel-item img {
+    border-radius: 10px;
+  }

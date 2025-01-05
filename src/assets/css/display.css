@@ -7,6 +7,15 @@
     color: #fff;
 }
 
+.card-img-top {
+    height: 200px; 
+    object-fit: cover; 
+  }
+
 .btn-details:hover{
     background-color: #787c78;
+}
+
+.head{
+    margin-top: 70px;
 }
