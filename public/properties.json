@@ -205,7 +205,7 @@
 		},{
 			"id": "prop9",
 			"type": "House",
-			"bedrooms": 0,
+			"bedrooms": 10,
 			"price": 120000,
 			"tenure": "Leasehold",
 			"description": "Compact and affordable studio apartment located near a university campus. Ideal for students or single professionals looking for a low-cost option.",

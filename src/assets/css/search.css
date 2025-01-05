@@ -46,11 +46,10 @@ h1 {
 .favorites-icon {
     border: 1px solid #646e65;
     cursor: pointer;
-    position:fixed;
+    position: fixed;
     top: 20px; 
     right: 18px; 
     z-index: 1000; 
-  
 }
 
 .favorites-icon:hover {
@@ -128,5 +127,30 @@ h1 {
 
     h1 {
         font-size: 1.8rem; /* Smaller font size for mobile */
+    }
+
+    .favorites-sidebar {
+        width: 50%; /* Adjust width for tablets */
+        right: 10px;
+        top: 60px;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .favorites-sidebar {
+        width: 80%; /* Adjust width for mobile */
+        right: 10px;
+        top: 60px;
+        height: auto;
+    }
+
+    .favorites-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .close-btn {
+        align-self: flex-end;
     }
 }
