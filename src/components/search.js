@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import "../assets/css/search.css";
 import Favorites from "./favourites";
 import Display from "./display"; // Import Display component
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+
 
 // Define the Search component
 function Search({ setSearchParams }) {
@@ -19,6 +20,7 @@ function Search({ setSearchParams }) {
   const [showFavorites, setShowFavorites] = useState(false);
   const [searchParams, setSearchParamsState] = useState({});
   const [availablePostcodes, setAvailablePostcodes] = useState([]);
+  const displayRef = useRef(null); // Create a reference to the Display component
 
   // Load favorites from local storage and available postcodes from properties.json
   useEffect(() => {
@@ -49,18 +51,35 @@ function Search({ setSearchParams }) {
       endDate,
       postcode,
     };
-    setSearchParams(params);//Call setSearchParams with the search parameters
-    setSearchParamsState(params);//Set the searchParams state
+    setSearchParams(params); // Call setSearchParams with the search parameters
+    setSearchParamsState(params); // Set the searchParams state
+    if (displayRef.current) {
+      displayRef.current.scrollIntoView({ behavior: "smooth" }); // Scroll to the Display component
+    }
+  };
+
+  // Clear all input fields
+  const clearInputs = () => {
+    setPropertyType("");
+    setMinPrice("");
+    setMaxPrice("");
+    setMinBedrooms("");
+    setMaxBedrooms("");
+    setStartDate("");
+    setEndDate("");
+    setPostcode("");
   };
 
   // Add property to favorites
   const addFavorite = (property) => {
-    if (!favorites.some((fav) => fav.id === property.id)) {//Check if the property is already in favorites
+    if (!favorites.some((fav) => fav.id === property.id)) { // Check if the property is already in favorites
       const newFavorites = [...favorites, property];
       setFavorites(newFavorites);
-      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+      localStorage.setItem("favorites", JSON.stringify(newFavorites)); // Save favorites to local storage
       alert("Added to favourites");
-    }alert("Already in favourites");
+    } else {
+      alert("Already in favourites");
+    }
   };
 
   // Remove property from favorites
@@ -73,15 +92,15 @@ function Search({ setSearchParams }) {
   // Clear all favorites
   const clearFavorites = () => {
     setFavorites([]);
-    localStorage.removeItem("favorites");//Remove favorites from local storage
+    localStorage.removeItem("favorites"); // Remove favorites from local storage
   };
 
   return (
     <div className="search-container">
-      <div className="favorites-icon btn btn-warning"  onClick={() => setShowFavorites(true)}>
-      ♥
+      <div className="favorites-icon btn btn-warning" onClick={() => setShowFavorites(true)}>
+        ♥
       </div>
-      {/* //Favorites modal */}
+      {/* Favorites modal */}
       <Modal show={showFavorites} onHide={() => setShowFavorites(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Favorites</Modal.Title>
@@ -100,7 +119,7 @@ function Search({ setSearchParams }) {
         </Modal.Footer>
       </Modal>
       <div>
-        {/* //Searching for properties */}
+        {/* Searching for properties */}
         <div className="search-overlay">
           <h1 className="text-center text-white mb-4">Find Your Dream Property</h1>
           <form onSubmit={handleSearch} className="container">
@@ -110,7 +129,7 @@ function Search({ setSearchParams }) {
                   <label htmlFor="property-type" className="text-white">Property Type</label>
                   <select
                     id="property-type"
-                    className="form-control"
+                    className="form-select"
                     value={propertyType}
                     onChange={(e) => setPropertyType(e.target.value)}
                   >
@@ -130,7 +149,7 @@ function Search({ setSearchParams }) {
                     className="form-control"
                     value={minPrice}
                     placeholder="Min Price"
-                    onChange={(e) => setMinPrice(e.target.value)}//Set the minPrice state
+                    onChange={(e) => setMinPrice(e.target.value)} // Set the minPrice state
                   />
                 </div>
               </div>
@@ -143,7 +162,7 @@ function Search({ setSearchParams }) {
                     className="form-control"
                     value={maxPrice}
                     placeholder="Max Price"
-                    onChange={(e) => setMaxPrice(e.target.value)}//Set the maxPrice state
+                    onChange={(e) => setMaxPrice(e.target.value)} // Set the maxPrice state
                   />
                 </div>
               </div>
@@ -219,13 +238,16 @@ function Search({ setSearchParams }) {
             </div>
 
             <div className="row">
-              <div className="col-md-2 offset-md-5">
-                <button type="submit" className="btn btn-primary w-100">Search</button>
+              <div className="col-md-12 d-flex justify-content-end">
+                <button type="submit" className="btn btn-search me-2">Search</button>
+                <button type="button" className="btn btn-search" onClick={clearInputs}>Clear Inputs</button>
               </div>
             </div>
           </form>
         </div>
-        <Display searchParams={searchParams} addFavorite={addFavorite} /> {/* Pass searchParams and addFavorite to Display */}
+        <div ref={displayRef}>
+          <Display searchParams={searchParams} addFavorite={addFavorite} /> {/* Pass searchParams and addFavorite to Display */}
+        </div>
       </div>
     </div>
   );

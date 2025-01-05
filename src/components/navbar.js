@@ -34,11 +34,11 @@ const Navbar = ({ showLinks }) => {//showLinks is a prop that will be passed to 
           <ul className="navbar-nav ms-auto">
             {showLinks && (
               <>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link" to="/">
                     Properties
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <a className="nav-link" href="#about">
                     About

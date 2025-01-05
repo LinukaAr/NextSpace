@@ -78,6 +78,7 @@ const PropertyDetail = () => {
           </Tabs>
         </div>
       </div>
+      {/* // Display the footer */}
       <Footer />
     </>
   );

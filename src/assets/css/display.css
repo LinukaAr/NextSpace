@@ -6,7 +6,9 @@
     background-color: #919c92;
     color: #fff;
 }
-
+.row{
+    width: 100%;
+}
 .card-img-top {
     height: 200px; 
     object-fit: cover; 

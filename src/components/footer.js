@@ -32,7 +32,7 @@ const Footer = () => {
               New Zealand
             </p>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 links">
             {/* // Social media links */}
             <h5>Follow Us</h5>
             <div className="social-links">

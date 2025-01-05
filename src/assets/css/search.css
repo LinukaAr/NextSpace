@@ -7,6 +7,10 @@
     align-items: center; 
 }
 
+.search-content{
+    flex-shrink: 0;
+}
+
 .favourites-container {
     width: 200px;
     margin-left: 20px;
@@ -21,7 +25,7 @@
   .search-overlay {
     width: 100%; 
     padding: 100px;
-    margin-top: 100px;
+    margin: 100px auto;
     background-image: url('../../../public/images/bg5.jpg');
     background-size: cover;
     background-position: center;
@@ -52,15 +56,17 @@ h1 {
     border-radius: 5px;
 }
 
-.btn-primary {
+.btn-search {
     background-color: #646e65;
-    border: 1px; 
+    border: 1px white solid; 
     padding: 10px;
     font-size: 1.1rem;
     margin-top: 40px;
+    color: white;
+
 }
 
-.btn-primary:hover {
+.btn-search:hover{
     background-color: #787c78;
 }
 
