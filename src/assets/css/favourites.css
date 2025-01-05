@@ -1,36 +1,106 @@
 .favorites-container {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 390px;
+}
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.favorite-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  flex-wrap: wrap;
+  position: relative; /* Add this to position the button */
+}
+
+.favorite-item img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.favorite-item div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.favorite-item div h5 {
+  margin: 0;
+}
+
+.favorite-item div p {
+  margin: 0;
+}
+
+.btn-clear {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #646e65;
+}
+
+.btn-clear:hover {
+  color: #787c78;
+}
+
+.draggable-icon {
+  cursor: grab;
+  margin-left: 10px;
+  position: absolute;
+  top: 70px;
+  right: 15px;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .favorites-container {
+    padding: 5px;
+    max-width: 100%;
   }
-  
+
   .favorites-list {
-    display: flex;
-    flex-direction: column;
+    max-width: 100%;
   }
-  
+
   .favorite-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
+    padding: 5px;
   }
-  
+
   .favorite-item img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .favorite-item {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .favorites-icon {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
+  .favorite-item img {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 
-  .btn-clear{
-    margin-left: auto;
+  .btn-clear {
+    margin: 10px auto;
   }
+}

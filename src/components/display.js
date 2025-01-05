@@ -43,13 +43,22 @@ const Display = ({ searchParams, addFavorite }) => { // addFavorite is a functio
     return new Date(`${month} ${day}, ${year}`).toLocaleDateString();
   };
 
+  //Drag and drop
+  const handleDragStart = (event, property) => {
+    event.dataTransfer.setData("property", JSON.stringify(property));
+  };
+
   return (
     <div className="container mt-5">
       <h1 className="text-center mb-4 head">Available Properties</h1>
       <div className="row">
         {filteredProperties.map((property) => (
-          <div className="col-md-4 mb-4" key={property.id}>
-            <div className="card">
+          <div 
+            className="col-md-4 mb-4" 
+            key={property.id}
+            >
+            <div className="card" draggable
+            onDragStart={(event) => handleDragStart(event, property)}>
               <img
                 src={property.picture}
                 className="card-img-top"
@@ -72,10 +81,19 @@ const Display = ({ searchParams, addFavorite }) => { // addFavorite is a functio
                 >
                   ♥
                 </button>
+                
                 {/* Link to the property details page with the property ID */}
                 <Link to={`/property/${property.id}`} className="btn btn-details ml-2">
                   View Details
                 </Link>
+                 {/* Draggable icon */}
+                 <span
+                className="draggable-icon"
+                draggable
+                onDragStart={(event) => handleDragStart(event, property)}
+              >
+                &#9776;
+              </span>
               </div>
             </div>
           </div>

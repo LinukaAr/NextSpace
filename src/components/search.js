@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../assets/css/search.css";
 import Favorites from "./favourites";
 import Display from "./display"; // Import Display component
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-
 
 // Define the Search component
 function Search({ setSearchParams }) {
@@ -72,14 +69,20 @@ function Search({ setSearchParams }) {
 
   // Add property to favorites
   const addFavorite = (property) => {
-    if (!favorites.some((fav) => fav.id === property.id)) { // Check if the property is already in favorites
-      const newFavorites = [...favorites, property];
-      setFavorites(newFavorites);
-      localStorage.setItem("favorites", JSON.stringify(newFavorites)); // Save favorites to local storage
-      alert("Added to favourites");
-    } else {
-      alert("Already in favourites");
-    }
+    setFavorites((prevFavorites) => {
+      // Check if the property is already in the favorites
+      if (prevFavorites.some((fav) => fav.id === property.id)) {
+        console.warn(`Property with id ${property.id} is already in favorites`);
+        alert(`Property with id ${property.id} is already in favorites`);
+        return prevFavorites;
+      }
+      const newFavorites = [...prevFavorites, property];
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+      console.log("Favorites updated:", newFavorites);
+      alert("Added to Favourites")
+      console.log("Local storage updated:", localStorage.getItem("favorites"));
+      return newFavorites;
+    });
   };
 
   // Remove property from favorites
@@ -95,29 +98,40 @@ function Search({ setSearchParams }) {
     localStorage.removeItem("favorites"); // Remove favorites from local storage
   };
 
+  const handleDropOutside = (event) => {
+    event.preventDefault();
+    const property = JSON.parse(event.dataTransfer.getData("property"));
+    removeFavorite(property.id);
+  };
+
+  const handleDragOverOutside = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <div className="search-container">
+    <div 
+      className="search-container"
+      onDrop={handleDropOutside}
+      onDragOver={handleDragOverOutside}>
       <div className="favorites-icon btn btn-warning" onClick={() => setShowFavorites(true)}>
         ♥
       </div>
-      {/* Favorites modal */}
-      <Modal show={showFavorites} onHide={() => setShowFavorites(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Favorites</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+      {/* Favorites sidebar */}
+      {showFavorites && (
+        <div className="favorites-sidebar">
+          <div className="favorites-header">
+            <h2>Favorites</h2>
+            <button className="close-btn" onClick={() => setShowFavorites(false)}>×</button>
+          </div>
           <Favorites
+            showFavorites={showFavorites}
+            setShowFavorites={setShowFavorites}
             favorites={favorites}
             removeFavorite={removeFavorite}
-            clearFavorites={clearFavorites}
+            addFavorite={addFavorite}
           />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowFavorites(false)}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        </div>
+      )}
       <div>
         {/* Searching for properties */}
         <div className="search-overlay">
