@@ -6,20 +6,21 @@ import Footer from "../components/footer";
 import "../assets/css/property-page.css"; 
 
 const PropertyDetail = () => {
-  const { id } = useParams();
-  const [property, setProperty] = useState(null);
+  const { id } = useParams();//Get the id from the URL
+  const [property, setProperty] = useState(null); // Initialize property state
 
   useEffect(() => {
-    const fetchProperty = async () => {
+    const fetchProperty = async () => {//Fetch the property data
       const response = await fetch(`${process.env.PUBLIC_URL}/properties.json`);
       const propertiesData = await response.json();
-      const property = propertiesData.properties.find((prop) => prop.id === id); 
+      const property = propertiesData.properties.find((prop) => prop.id === id); // Find the property with the matching id
       setProperty(property);
     };
 
     fetchProperty();
   }, [id]);
 
+  // If the property is not found, display a message
   if (!property) {
     return <div>Property not found</div>;
   }
@@ -32,6 +33,7 @@ const PropertyDetail = () => {
           <h1>{property.type}</h1>
           <div className="row">
             <div className="col-md-8">
+              {/* // Display property images in a carousel. carousel is a Bootstrap component */}
               <Carousel>
                 {property.images && property.images.map((img, index) => (
                   <Carousel.Item key={index}>
@@ -50,6 +52,7 @@ const PropertyDetail = () => {
               <p><strong>Bedrooms:</strong> {property.bedrooms}</p>
             </div>
           </div>
+          {/* // Display property details in tabs. Tabs is a Ract Bootstrap component */}
           <Tabs defaultActiveKey="map" id="property-tabs" className="tabs">
             <Tab eventKey="map" title="Map">
               <iframe
@@ -70,7 +73,7 @@ const PropertyDetail = () => {
               </div>
             </Tab>
             <Tab eventKey="floorPlan" title="Floor Plan">
-              <img src={`${process.env.PUBLIC_URL}/${property.floorPlan}`} className="img-fluid" alt="Floor Plan" />
+              <img src={`${process.env.PUBLIC_URL}/${property.floorPlan}`} className="img-fluid" alt="Floor Plan" />{/*Display the floor plan image */}
             </Tab>
           </Tabs>
         </div>
